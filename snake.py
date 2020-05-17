@@ -8,7 +8,6 @@ postpone = 0.1
 score = 0
 high_score = 0
 
-
 #Config Window
 wn = turtle.Screen()
 wn.title("SNAKE GAME")
@@ -45,7 +44,6 @@ text.hideturtle()
 text.goto(0,260)
 text.write("Score: 0     High Score : 0", align = "center", font = ("Courier", 20, "normal"))
 
-
 #Funtions
 
 def up():
@@ -78,30 +76,23 @@ wn.onkeypress(down, "Down")
 wn.onkeypress(left, "Left")
 wn.onkeypress(right, "Right")       
 
-
 while True:
     wn.update()
-    
     #Edge collisions
     if head.xcor() > 280 or head.xcor() < -280 or head.ycor() > 280 or head.ycor() < -280:
         time.sleep(1)
         head.goto(0,0)
         head.direction = "stop"
-
         #Hide segments
         for segment in segments:
             segment.goto(1000, 1000)
-
         #Clear Segments
         segments.clear()        
-
         #Reset scoreboard
         score = 0
         text.clear()
         text.write("Score: {}     High Score : {}".format(score, high_score), align = "center", font = ("Courier", 20, "normal"))
-
-
-
+        
     #Food collisions
     if head.distance(food) < 20:
        x = random.randint(-280, 280)
@@ -114,16 +105,13 @@ while True:
        new_segment.color("green")
        new_segment.penup()
        segments.append(new_segment)
-
        #Increase score
        score += 10
-
        if score > high_score:
            high_score = score
        text.clear()
        text.write("Score: {}     High Score : {}".format(score, high_score), align = "center", font = ("Courier", 20, "normal"))
   
-
     #Move the snake's body 
     totalseg = len(segments)
     for index in range(totalseg -1, 0, -1):
@@ -135,7 +123,6 @@ while True:
         x = head.xcor()
         y = head.ycor()
         segments[0].goto(x,y)    
-
     mov()
 
     #Collisions with the body
@@ -144,21 +131,15 @@ while True:
             time.sleep(1)
             head.goto(0, 0)
             head.direction = "stop"
-
             #Hide segments
             for segment in segments:
                 segment.goto(1100, 1100)
-
             #Clear segments
             segments.clear() 
-
             #Reset scoreboard
             score = 0
             text.clear()
-            text.write("Score: {}     High Score : {}".format(score, high_score), align = "center", font = ("Courier", 20, "normal"))
-                       
-
-
+            text.write("Score: {}     High Score : {}".format(score, high_score), align = "center", font = ("Courier", 20, "normal"))               
     time.sleep(postpone)
 
 #turtle.getscreen()._root.mainloop() #<-- run the Tkinter main loop
