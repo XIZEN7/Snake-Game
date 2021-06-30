@@ -1,6 +1,7 @@
 
 # Snake-Game
 
-Python 3
-
-UwU
+## Run app
+```
+python snake.py
+``` 
